@@ -21,6 +21,8 @@ def get_weather(api_key, city_name, temperature_unit='metric'):
         st.write("Weather:", weather_data["weather"][0]["description"])
         st.write("Temperature:", weather_data["main"]["temp"], f"{temperature_unit.upper()}")
         st.write("Wind Speed:", weather_data["wind"]["speed"], "m/s")
+        st.write("Humidity:", weather_data["main"]["humidity"], "%")
+        st.write("\n")
 
     except requests.exceptions.HTTPError as errh:
         st.write(f"HTTP Error: {errh}")
@@ -43,6 +45,9 @@ def get_news(api_key):
         st.write("Top 20 Headlines:")
         for index, article in enumerate(articles, start=1):
             st.write('------------------------------------------')
+            st.write('\n' + f"Article {index}")
+            st.write('\n' + f"Author {index}")
+            st.write(article['author'])
             st.write('\n' + f"Title {index}")
             st.write(article['title'])
             st.write('\n' + f"Description {index}")
@@ -51,6 +56,8 @@ def get_news(api_key):
             st.write(article['publishedAt'])
             st.write('\n' + f"Content {index}")
             st.write(article['content'])
+            st.write('\n' + f"URL {index}")
+            st.write(article['url'])
             st.write('------------------------------------------')
 
     except requests.exceptions.HTTPError as errh:
