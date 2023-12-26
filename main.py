@@ -33,8 +33,8 @@ def get_weather(api_key, city_name, temperature_unit='metric'):
     except requests.exceptions.RequestException as err:
         st.write(f"Request Exception: {err}")
 
-def get_news(api_key):
-    url = 'https://newsapi.org/v2/top-headlines?' 'country=us&' f'apiKey={api_key}'
+def get_news(api_key, city_name):
+    url = f'https://newsapi.org/v2/top-headlines?q={city_name}&' f'apiKey={api_key}'
 
     try:
         response = requests.get(url)
@@ -42,7 +42,7 @@ def get_news(api_key):
         news_data = response.json()
 
         articles = news_data['articles']
-        st.write("Top 20 Headlines:")
+        st.write("Top Headlines:")
         for index, article in enumerate(articles, start=1):
             st.write('------------------------------------------')
             st.write('\n' + f"Article {index}")
@@ -88,7 +88,7 @@ def main():
 
     if st.button("Get Weather and News"):
         get_weather(api_key_weather, city_name, temperature_unit)
-        get_news(api_key_news)
+        get_news(api_key_news, city_name)
 
 if __name__ == "__main__":
     main()
