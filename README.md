@@ -58,6 +58,10 @@ CityInsight combines OpenWeatherMap and NewsAPI to deliver a comprehensive view 
 - Keep your API keys confidential and do not share them publicly.
 - Ensure an active internet connection for accurate data retrieval.
 
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 ## Author
 
 [Vikranth Udandarao](https://github.com/Vikranth3140)
