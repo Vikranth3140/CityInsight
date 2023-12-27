@@ -84,6 +84,18 @@ def main():
           position: fixed;
           bottom: 3rem;
         }}
+        .made-by {{
+          position: fixed;
+          bottom: 10px;
+          left: 10px;
+          color: white;
+        }}
+        .source-code {{
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          color: white;
+        }}
     </style>
     """
     st.markdown(styl, unsafe_allow_html=True)
@@ -100,8 +112,8 @@ def main():
         get_weather(api_key_weather, city_name, temperature_unit)
         get_news(api_key_news, city_name)
 
-    st.markdown("<div style='position:fixed; bottom:10px; left:10px; color:white;'>Made by <a href='https://github.com/Vikranth3140' style='color:white; text-decoration:none;'>Vikranth Udandarao</a></div>", unsafe_allow_html=True)
-    st.markdown("<div style='position:fixed; bottom:10px; right:10px; color:white;'><a href='https://github.com/Vikranth3140/CityInsight' style='color:white; text-decoration:none;'>Source Code</a></div>", unsafe_allow_html=True)
+    st.markdown("<div class='made-by'>Made by <a href='https://github.com/Vikranth3140' style='color:white; text-decoration:none;'>Vikranth Udandarao</a></div>", unsafe_allow_html=True)
+    st.markdown("<div class='source-code'><a href='https://github.com/Vikranth3140/CityInsight' style='color:white; text-decoration:none;'>Source Code</a></div>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
