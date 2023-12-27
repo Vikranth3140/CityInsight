@@ -78,6 +78,16 @@ def main():
         st.write("Please provide API keys.")
         return
 
+    styl = f"""
+    <style>
+        .stTextInput {{
+          position: fixed;
+          bottom: 3rem;
+        }}
+    </style>
+    """
+    st.markdown(styl, unsafe_allow_html=True)
+
     st.title("CityInsight🌆🏢")
 
     city_name = st.text_input("Enter city name:")
