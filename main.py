@@ -78,7 +78,7 @@ def main():
         st.write("Please provide API keys.")
         return
 
-    st.title("🌍 CityInsight - Weather and News Tracker 📰")
+    st.title("🌍 CityInsight - Weather & News Tracker 📰")
 
     city_name = st.text_input("Enter city name:")
     temperature_unit = st.text_input("Enter temperature unit (default is Celsius, enter 'imperial' for Fahrenheit): ")
