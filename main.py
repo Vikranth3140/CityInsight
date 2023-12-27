@@ -90,5 +90,7 @@ def main():
         get_weather(api_key_weather, city_name, temperature_unit)
         get_news(api_key_news, city_name)
 
+    st.markdown("Made by [Vikranth Udandarao](https://github.com/Vikranth3140)")
+
 if __name__ == "__main__":
     main()
