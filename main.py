@@ -86,14 +86,10 @@ def main():
           left: 10px;
           color: white;
         }}
-        .source-code {{
-          position: fixed;
-          bottom: 10px;
-          left: 30px;
-          color: white;
-        }}
     </style>
     """
+
+    st.markdown(styl, unsafe_allow_html=True)
 
     st.title("CityInsight🌆🏢")
 
