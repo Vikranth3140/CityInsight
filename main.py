@@ -80,10 +80,6 @@ def main():
 
     styl = f"""
     <style>
-        .stTextInput {{
-          position: fixed;
-          bottom: 3rem;
-        }}
         .made-by {{
           position: fixed;
           bottom: 10px;
