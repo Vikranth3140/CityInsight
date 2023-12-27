@@ -71,8 +71,8 @@ def get_news(api_key, city_name):
 
 def main():
     # Replace with your API keys
-    api_key_weather = "api_key_weather"
-    api_key_news = "api_key_news"
+    api_key_weather = "1c4aaa597dd29ba9c44da6839c89fbf6"
+    api_key_news = "a3219de17f424b1380562001868597fe"
 
     if not api_key_weather or not api_key_news:
         st.write("Please provide API keys.")
