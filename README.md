@@ -4,6 +4,8 @@ CityInsight is a Python application that integrates weather and news information
 
 Currently deployed at <a href="https://cityinsight.streamlit.app/">CityInsight<a>.
 
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ror1067egnmn80atf4ne.png">
+
 ## Overview
 
 CityInsight combines OpenWeatherMap and NewsAPI to deliver a comprehensive view of your city's current conditions and the latest news.
