@@ -86,6 +86,12 @@ def main():
           left: 10px;
           color: white;
         }}
+        .source-code {{
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          color: white;
+        }}
     </style>
     """
 
