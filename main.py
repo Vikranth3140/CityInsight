@@ -94,7 +94,6 @@ def main():
         }}
     </style>
     """
-    st.markdown(styl, unsafe_allow_html=True)
 
     st.title("CityInsight🌆🏢")
 
