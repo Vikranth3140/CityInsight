@@ -89,7 +89,7 @@ def main():
         .source-code {{
           position: fixed;
           bottom: 10px;
-          right: 10px;
+          left: 30px;
           color: white;
         }}
     </style>
