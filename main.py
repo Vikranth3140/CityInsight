@@ -2,6 +2,21 @@ import os
 import requests
 import streamlit as st
 import json
+import base64
+
+def sidebar_bg(side_bg):
+    side_bg_ext = 'png'
+
+    st.markdown(
+        f"""
+        <style>
+        [data-testid="stSidebar"] > div:first-child {{
+            background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open('{side_bg}', "rb").read()).decode()});
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 def get_weather(api_key, city_name, temperature_unit='metric'):
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -77,6 +92,9 @@ def main():
     if not api_key_weather or not api_key_news:
         st.write("Please provide API keys.")
         return
+
+    side_bg = 'path_to_local_image'
+    sidebar_bg(side_bg)
 
     styl = f"""
     <style>
