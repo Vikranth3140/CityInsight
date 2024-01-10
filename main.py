@@ -11,8 +11,8 @@ def sidebar_bg(side_bg):
         f"""
         <style>
         [data-testid="stSidebar"] > div:first-child {{
-            background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open('{side_bg}', "rb").read()).decode()});
-            background-size: cover;
+            # background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open('{side_bg}', "rb").read()).decode()});
+            # background-size: cover;
         }}
         </style>
         """,
@@ -94,8 +94,8 @@ def main():
         st.write("Please provide API keys.")
         return
 
-    side_bg = "assets\city.png"
-    sidebar_bg(side_bg)
+    # side_bg = "assets\city.png"
+    # sidebar_bg(side_bg)
 
     styl = f"""
     <style>
