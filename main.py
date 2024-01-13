@@ -4,6 +4,10 @@ import streamlit as st
 import json
 import base64
 
+st.set_page_config(page_title="CityInsight", page_icon="🌆", layout="wide", initial_sidebar_state="expanded")
+
+city_exists = False
+
 def sidebar_bg(side_bg):
     side_bg_ext = 'png'
 
@@ -20,6 +24,7 @@ def sidebar_bg(side_bg):
     )
 
 def get_weather(api_key, city_name, temperature_unit='metric'):
+    global city_exists
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
     complete_url = f"{base_url}appid={api_key}&q={city_name}&units={temperature_unit}"
 
@@ -40,17 +45,16 @@ def get_weather(api_key, city_name, temperature_unit='metric'):
         st.write("Humidity:", weather_data["main"]["humidity"], "%")
         st.write("\n")
 
-    except requests.exceptions.HTTPError as errh:
-        st.write(f"HTTP Error: {errh}")
-    except requests.exceptions.ConnectionError as errc:
-        st.write(f"Error Connecting: {errc}")
-    except requests.exceptions.Timeout as errt:
-        st.write(f"Timeout Error: {errt}")
-    except requests.exceptions.RequestException as err:
-        st.write(f"Request Exception: {err}")
+        city_exists = True
+
+    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as errh:
+        st.write("Please enter a valid city name.")
 
 def get_news(api_key, city_name):
     url = f'https://newsapi.org/v2/top-headlines?q={city_name}&' f'apiKey={api_key}'
+
+    if not city_exists:
+        return
 
     try:
         response = requests.get(url)
@@ -62,28 +66,21 @@ def get_news(api_key, city_name):
         for index, article in enumerate(articles, start=1):
             st.write('------------------------------------------')
             st.write('\n' + f"Article {index}")
-            st.write('\n' + f"Author {index}")
+            st.write('\n' + f"Author")
             st.write(article['author'])
-            st.write('\n' + f"Title {index}")
+            st.write('\n' + f"Title")
             st.write(article['title'])
-            st.write('\n' + f"Description {index}")
+            st.write('\n' + f"Description")
             st.write(article['description'])
-            st.write('\n' + f"Published on {index}")
+            st.write('\n' + f"Published on")
             st.write(article['publishedAt'])
-            st.write('\n' + f"Content {index}")
+            st.write('\n' + f"Content")
             st.write(article['content'])
-            st.write('\n' + f"URL {index}")
+            st.write('\n' + f"URL")
             st.write(article['url'])
-            st.write('------------------------------------------')
 
-    except requests.exceptions.HTTPError as errh:
-        st.write(f"HTTP Error: {errh}")
-    except requests.exceptions.ConnectionError as errc:
-        st.write(f"Error Connecting: {errc}")
-    except requests.exceptions.Timeout as errt:
-        st.write(f"Timeout Error: {errt}")
-    except requests.exceptions.RequestException as err:
-        st.write(f"Request Exception: {err}")
+    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as errh:
+        st.write("Please enter a valid city name.")
 
 def main():
     # Replace with your API keys
@@ -102,13 +99,13 @@ def main():
         .made-by {{
           position: fixed;
           bottom: 10px;
-          left: 10px;
+          left: 600px;
           color: white;
         }}
         .source-code {{
           position: fixed;
           bottom: 10px;
-          right: 10px;
+          right: 700px;
           color: white;
         }}
     </style>
