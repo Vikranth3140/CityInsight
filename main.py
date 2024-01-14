@@ -62,7 +62,7 @@ def get_news(api_key, city_name):
             st.write('\n' + f"URL: {article.get('url', 'N/A')}")
         st.write('------------------------------------------')
 
-    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as errh:
+    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException):
         st.write("Please enter a valid city name.")
 
 def get_teleport_data(city_name):
@@ -92,7 +92,7 @@ def get_teleport_data(city_name):
                 for category, score in scores.items():
                     st.write(f"{category.capitalize()}: {score}")
 
-    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as errh:
+    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException):
         st.write("Please enter a valid city name.")
 
 def get_urban_area_endpoint(city_name):
@@ -111,7 +111,7 @@ def get_urban_area_endpoint(city_name):
         ua_endpoint = r2['_links']['city:urban_area']['href']
         return ua_endpoint
 
-    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as errh:
+    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException):
         st.write("Please enter a valid city name.")
         return None
 
@@ -132,7 +132,7 @@ def get_area_details(ua_endpoint):
                 result[cat['label']][name] = score
         return result
 
-    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as errh:
+    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException):
         st.write("Please enter a valid city name.")
         return 'not_found'
 
@@ -143,7 +143,7 @@ def get_area_images(ua_endpoint):
         r = r.json()
         return r['photos']
 
-    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as errh:
+    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException):
         st.write("Please enter a valid city name.")
         return 'not_found'
 
@@ -155,7 +155,7 @@ def get_area_scores(ua_endpoint):
         result = {i['name']: i['score_out_of_10'] for i in r['categories']}
         return result
 
-    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException) as errh:
+    except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError, requests.exceptions.Timeout, requests.exceptions.RequestException):
         st.write("Please enter a valid city name.")
         return 'not_found'
 
